@@ -1,0 +1,63 @@
+
+<html ng-app="kiosk">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/ng-animation.css">
+</head>
+<body class="body" ng-app="kiosk" data-ng-init="init()">
+    <div class="left" id="info" ng-controller="Proximity">
+        <div class="info"><!--Информационный блок-->
+            <p>В современной экономике доминирующие позиции занимают крупные компании, обладающие гибкостью, динамичностью и высоким потенциалом развития. </p>
+            <p>Вертикально-интегрированный характер холдинга, высокий уровень концентрации управленческих, экономических и финансовых ресурсов в рамках компании позволяют ей эффективно и сбалансировано распределять инвестиционные потоки между всеми
+направлениями деятельности.</p>
+        </div>
+  <div class="place">{{proximity.code}}</div>
+
+  <div id="barcode_form_div">
+    <form id="barcodeform" ng-submit="submitbarcode()">
+          <input name="im_barcode" id="ratevalue" ng-model="proximity.code" type="text" class="ready_input" autofocus>
+          <input type="submit" style="position: absolute; left: -9999px; width: 1px; height: 1px;"/>
+    </form>
+  </div>
+  <div class="barcode">{{barcoderesult}}</div>
+<div onclick=" changeProximityCode('codezzzz')">click me</div>
+    </div>
+
+
+<!--Правый блок-->
+<div class="main"> <!--изменение цвета фона-->
+
+<div class="group slide-right" ng-repeat="grp in list" ng-class="{'103006':'red', '103007':'orange','103008':'yellow','103009':'green'}[grp.uwp_item]">
+
+<table  class="label slide-right" ng-repeat="item in grp.list">
+    <tr>
+        <td class="fill col1">{{item.ZFULLNAME_TRANSP}}</td>
+        <td class="fill col2">менеджер</td>
+        <td class="fill col3">&nbsp;</td>
+    </tr>
+    <tr >
+        <td class="fill car">{{item.AUTO_MARKA}} {{item.AUTO_NOMER}}</td>
+        <td class="row2">{{item.AUTHOR_PNM}}<br>{{item.AUTHOR_TEL}}</td>
+        <td class="fill">&nbsp;</td>
+    </tr>
+    <tr>
+        <td class="fill">
+           <div ng-if="item.AUTO_NOMER == ''"> {{item.TSO_047}} </div>
+           <div ng-if="item.AUTO_NOMER != ''"> {{item.PRICEP_MARKA}} {{item.PRICEP_NOMER}} </div>
+        </td>
+        <td class="fill"><span ng-class="{'X':'graytext', ' ':' '}[item.ZFROM]">{{item.VALID_DATE_FROM}}</span> -
+                         <span ng-class="{'X':'graytext', ' ':' '}[item.ZTO]">{{item.VALID_DATE_TO}}</span></td>
+        <td class="fill">&nbsp;</td>
+    </tr>
+</table>
+
+</div>
+
+</div>
+    <script src="js/angular.min.js"></script>
+    <script src="js/angular-animate.min.js"></script>
+    <script src="js/angular-route.min.js"></script>
+    <script src="js/app.js"></script>
+
+</BODY>
+</HTML>
