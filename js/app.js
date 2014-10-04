@@ -1,6 +1,6 @@
 (function(){
   var prx = { code: 'Azurite', price: 2.95 };
-  var app = angular.module('kiosk', ['ngAnimate','ngRoute']);
+  var app = angular.module('kiosk', [ ]);
   app.controller('Proximity',['$scope','$interval', function($scope,$interval){
     $scope.proximity = prx;
     $scope.prxtimer = 0;
@@ -12,7 +12,7 @@
           if ($scope.prxtimer>0){
             $scope.prxtimer--;
           } else {
-           $scope.proximity.code = "";
+//           $scope.proximity.code = "";
           } 
         }, 100);
     };
@@ -26,6 +26,6 @@ function changeProximityCode(code) {
     var controllerElement = document.getElementById('info');
     var controllerScope = angular.element(controllerElement).scope();
     controllerScope.proximity.code = code;
-    controllerScope.prxtimer = 100;
+    controllerScope.prxtimer = 10;
     appScope.$apply(function() {});
 }
